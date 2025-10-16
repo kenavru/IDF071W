@@ -67,8 +67,7 @@ d. (connect to wifi and update it if you didnt, some security patches.. can be s
    no HOME button, so
    adb shell input keyevent KEYCODE_HOME
   
-   
-    
+ https://www.apkmirror.com/apk/lineageos/android-system-webview-2/android-system-webview-2-90-0-4430-82-release/android-system-webview-90-0-4430-82-13-android-apk-download
    
    
 
