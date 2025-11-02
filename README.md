@@ -23,34 +23,60 @@ c. check adb connection with adb devices
 d. (connect to wifi and update it if you didnt, some security patches.. can be skiped, as android 6 is far from secure anyway)
 3. Launcher
    a. lets jailbreak it from frameo
+   
    adb install com.android.launcher_6.0.1-23_minAPI23(nodpi)_apkmirror.com.apk
+   
    adb shell am start -a android.intent.action.MAIN
+   
    chose other launcher, and get rid of this ^^&^
+   
    adb shell pm uninstall --user 0 net.frameo.frame
+   
    GREAT, now you got ALMOST working android tablet, You can do anything from this point.
+   
    What doesnt work: No action buttons like HOME, No status ribbon
+   
    first can be bypassed with
+   
    adb shell input keyevent KEYCODE_HOME
 4. Make full Android UI
   a. I dont care - so i skip it ;)
 5. Webview
+
    a. juicy part, Webview installed in root fs is odexed AOSP version v44, so it need to be com.android.webview version, not chrome one. v90 from linageos works fine, armv7, newer might work, but max API23.     Currently 90 is OK for HA.
+
    b.Lets pusch our webview to temp
+   
    adb push webview90.apk /data/local/tmp/webview.apk
+   
    c. time for shell
+   
    adb shell
+   
    (RISKY ! can break OS from this point !!!)
+   
    mount -o remount,rw /system
+   
    make backup if you like
+   
    cp /system/app/webview/webview.apk /system/app/webview.apk_bak
+   
    replace with new one
+   
    cp /data/local/tmp/webview.apk /system/app/webview/webview.apk
+   
    check permisions
+   
    ls -l /system/app/webview
+   
    (should be -rw-r--r-- root     root     71957611 2025-10-16 23:02 webview.apk)
+   
    if isnt
+   
    # Fix permissions
+   
     chmod 644 /system/app/webview/webview.apk
+    
     chown root:root /system/app/webview/webview.apk
    d. We are done here.
    reboot
