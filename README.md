@@ -54,6 +54,7 @@ d. (connect to wifi and update it if you didnt, some security patches.. can be s
    adb shell
    
    (RISKY ! can break OS from this point !!!)
+   su
    
    mount -o remount,rw /system
    
